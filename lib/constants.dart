@@ -1,0 +1,1 @@
+const double smallPadding = 15.0;
