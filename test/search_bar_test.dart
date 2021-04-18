@@ -20,6 +20,6 @@ void main() {
     await tester.tap(searchButton);
     await tester.pump();
 
-    //expect(find.byKey(Key('reset-button')), findsOneWidget);
+    expect(find.byKey(Key('reset-button')), findsOneWidget);
   });
 }
