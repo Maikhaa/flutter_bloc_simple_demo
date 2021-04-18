@@ -24,6 +24,7 @@ class SearchBar extends StatelessWidget {
           Expanded(
             flex: 9,
             child: TextField(
+              key: Key('search-input'),
               controller: searchCityController,
               autofocus: true,
               decoration: InputDecoration(
