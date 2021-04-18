@@ -8,10 +8,13 @@ class WeatherInfo extends StatelessWidget {
     return BlocBuilder<WeatherBloc, WeatherState>(
       builder: (BuildContext context, state) {
         switch (state.status) {
+          case WeatherStatus.loading:
+            return Center(
+                child: CircularProgressIndicator());
           case WeatherStatus.loaded:
             return Center(
                 child: Container(
-                    key: Key("weather-info"), child: Text("Weather Info")));
+                    key: Key("weather-info"), child: Text("${state.weather.temp}")));
           default:
             return Center(
                 child: Container(

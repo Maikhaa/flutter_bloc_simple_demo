@@ -16,7 +16,7 @@ void main() {
     var textField = find.byKey(Key('search-input'));
     var searchButton = find.byKey(Key('search-button'));
 
-    await tester.enterText(textField, "London");
+    await tester.enterText(textField, "london");
     await tester.tap(searchButton);
     await tester.pump();
 
