@@ -36,7 +36,7 @@ class Home extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(flex: 1, child: SearchBar()),
-              Expanded(flex: 9, child: Container()),
+              Expanded(flex: 9, child: WeatherInfo()),
             ],
           ),
         ),
