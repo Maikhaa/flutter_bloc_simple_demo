@@ -37,22 +37,24 @@ class SearchBar extends StatelessWidget {
             flex: 1,
             child: BlocBuilder<WeatherBloc, WeatherState>(
                 builder: (context, state) {
-              if (state is WeatherIsLoaded) {
-                return IconButton(
-                  key: Key('reset-button'),
-                  icon: Icon(Icons.close),
-                  onPressed: () {
-                    weatherBloc.add(GetWeather(searchCityController));
-                  },
-                );
+              switch (state.status) {
+                case WeatherStatus.loaded:
+                  return IconButton(
+                    key: Key('reset-button'),
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      weatherBloc.add(GetWeather(searchCityController));
+                    },
+                  );
+                default:
+                  return IconButton(
+                    key: Key('search-button'),
+                    icon: Icon(Icons.search),
+                    onPressed: () {
+                      weatherBloc.add(GetWeather(searchCityController));
+                    },
+                  );
               }
-              return IconButton(
-                key: Key('search-button'),
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  weatherBloc.add(GetWeather(searchCityController));
-                },
-              );
             }),
           ),
         ]),
