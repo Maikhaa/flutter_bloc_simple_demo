@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_simple_demo/bloc/weather_bloc.dart';
 import 'package:flutter_bloc_simple_demo/data/weather_repo.dart';
-import 'package:flutter_bloc_simple_demo/search_bar.dart';
-import 'package:flutter_bloc_simple_demo/weather_info.dart';
+import 'package:flutter_bloc_simple_demo/widgets/search_bar.dart';
+import 'package:flutter_bloc_simple_demo/widgets/weather_info.dart';
 
 void main() {
   runApp(WeatherApp());

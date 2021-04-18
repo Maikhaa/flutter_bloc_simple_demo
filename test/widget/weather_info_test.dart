@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc_simple_demo/main.dart';
-import 'package:flutter_bloc_simple_demo/weather_info.dart';
+import 'package:flutter_bloc_simple_demo/widgets/weather_info.dart';
 
 void main() {
   testWidgets('Finds WeatherInfo', (WidgetTester tester) async {
