@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter_bloc_simple_demo/bloc/weather_bloc.dart';
 import 'package:flutter_bloc_simple_demo/data/weather_repo.dart';
 import 'package:flutter_bloc_simple_demo/widgets/search_bar.dart';
@@ -17,13 +18,16 @@ class WeatherApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.lightBlue,
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return BlocProvider(
+      create: (BuildContext context) => WeatherBloc(WeatherRepo(http.Client())),
+      child: MaterialApp(
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.lightBlue,
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: SafeArea(child: Home()),
       ),
-      home: SafeArea(child: Home()),
     );
   }
 }
@@ -32,18 +36,15 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (BuildContext context) => WeatherBloc(WeatherRepo()),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(flex: 1, child: SearchBar()),
-                Expanded(flex: 9, child: WeatherInfo()),
-              ],
-            ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(flex: 1, child: SearchBar()),
+              Expanded(flex: 9, child: WeatherInfo()),
+            ],
           ),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.

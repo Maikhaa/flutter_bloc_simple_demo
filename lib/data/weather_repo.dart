@@ -5,20 +5,22 @@ import 'dart:convert';
 import '../constants.dart';
 
 class WeatherRepo {
-  Future<WeatherModel?> getWeather(String city) async {
-    final client = http.Client();
+  http.Client client;
 
-    final locationResponse = await getLocationResponse(client, city);
+  WeatherRepo(this.client);
+
+  Future<WeatherModel?> getWeather(String city) async {
+    final locationResponse = await getLocationResponse(city);
     final woeid = findWoeid(locationResponse);
-    final weatherResponse = await getWeatherResponse(client, woeid);
+    final weatherResponse = await getWeatherResponse(woeid);
     final weatherModel = createWeatherModel(weatherResponse);
 
     return weatherModel;
   }
 
-  Future<http.Response> getLocationResponse(http.Client client, String city) async {
-    final locationResponse =
-        await client.get(Uri.https(kstBaseUrl, kstLocationPath, {'query': '$city'}));
+  Future<http.Response> getLocationResponse(String city) async {
+    final locationResponse = await client
+        .get(Uri.https(kstBaseUrl, kstLocationPath, {'query': '$city'}));
 
     return locationResponse.statusCode == 200
         ? locationResponse
@@ -32,7 +34,7 @@ class WeatherRepo {
     return woeid;
   }
 
-  Future<http.Response> getWeatherResponse(http.Client client, woeid) async {
+  Future<http.Response> getWeatherResponse(woeid) async {
     final weatherResponse =
         await client.get(Uri.https(kstBaseUrl, '/api/location/$woeid/'));
 

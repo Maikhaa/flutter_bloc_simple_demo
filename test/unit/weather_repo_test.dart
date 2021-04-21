@@ -31,16 +31,16 @@ void main() {
   when(mockClient.get(Uri.https(kstBaseUrl, "/api/location/''/")))
       .thenAnswer((_) async => http.Response('Not Found', 404));
 
-  final weatherRepo = WeatherRepo();
+  final weatherRepo = WeatherRepo(mockClient);
 
   group('getLocationResponse', () {
     test('Throws exception when given an empty string', () async {
-      var locationResponse = weatherRepo.getLocationResponse(mockClient, '');
+      var locationResponse = weatherRepo.getLocationResponse('');
       expect(locationResponse, throwsException);
     });
     test('Returns locationResponse when given city', () async {
       var locationResponse =
-          weatherRepo.getLocationResponse(mockClient, fakeCity);
+          weatherRepo.getLocationResponse(fakeCity);
       expect(await locationResponse, fakeLocationResponse);
     });
   });
@@ -58,12 +58,12 @@ void main() {
 
   group('getWeatherResponse', () {
     test('Throws exception when given an empty string', () async {
-      var weatherResponse = weatherRepo.getLocationResponse(mockClient, '');
+      var weatherResponse = weatherRepo.getLocationResponse('');
       expect(weatherResponse, throwsException);
     });
     test('Returns weatherResponse when given a woeid', () async {
       var weatherResponse =
-          weatherRepo.getWeatherResponse(mockClient, fakeWoeid);
+          weatherRepo.getWeatherResponse(fakeWoeid);
       expect(await weatherResponse, fakeWeatherResponse);
     });
   });
