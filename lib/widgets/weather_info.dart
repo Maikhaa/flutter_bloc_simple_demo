@@ -14,7 +14,7 @@ class WeatherInfo extends StatelessWidget {
           case WeatherStatus.loaded:
             return Center(
                 child: Container(
-                    key: Key("weather-info"), child: Text("${state.weather.temp}")));
+                    key: Key("weather-info"), child: Text("${state.weather!.temp}")));
           default:
             return Center(
                 child: Container(

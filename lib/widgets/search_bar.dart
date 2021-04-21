@@ -19,7 +19,7 @@ class SearchBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(right: smallPadding, left: smallPadding),
+        padding: const EdgeInsets.only(right: kstSmallPadding, left: kstSmallPadding),
         child: Row(children: [
           Expanded(
             flex: 9,

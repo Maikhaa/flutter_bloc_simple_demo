@@ -3,16 +3,16 @@ part of 'weather_bloc.dart';
 enum WeatherStatus { initial, loading, loaded, error }
 
 class WeatherState extends Equatable {
-  final WeatherStatus status;
-  final WeatherModel weather;
+  final WeatherStatus? status;
+  final WeatherModel? weather;
 
-  const WeatherState({@required this.status, this.weather});
+  const WeatherState({this.status, this.weather});
 
-  WeatherModel get getWeather => weather;
+  WeatherModel? get getWeather => weather;
 
   WeatherState copyWith({
-    WeatherStatus status,
-    WeatherModel weather
+    WeatherStatus? status,
+    WeatherModel? weather
   }) {
     return WeatherState(
       status: status ?? this.status,
@@ -21,5 +21,5 @@ class WeatherState extends Equatable {
   }
 
   @override
-  List<Object> get props => [status, weather];
+  List<Object?> get props => [status, weather];
 }
