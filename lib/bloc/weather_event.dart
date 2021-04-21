@@ -5,7 +5,7 @@ abstract class WeatherEvent extends Equatable {
 }
 
 class GetWeather extends WeatherEvent{
-  final city;
+  final String city;
 
   GetWeather(this.city);
 
