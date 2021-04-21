@@ -1,38 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart' as http;
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:flutter_bloc_simple_demo/bloc/weather_bloc.dart';
 import 'package:flutter_bloc_simple_demo/data/weather_repo.dart';
 import 'package:flutter_bloc_simple_demo/widgets/search_bar.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc_simple_demo/main.dart';
-import 'package:flutter_bloc_simple_demo/constants.dart';
+import '../mock_helpers/mock_client_helper.dart';
 
-import '../unit/weather_repo_test.mocks.dart';
-
-@GenerateMocks([http.Client])
 void main() {
-  final mockClient = MockClient();
-  final fakeCity = 'london';
-  final fakeWoeid = 44418;
-  final fakeLocationResponse =
-      http.Response(KstFakeLocationResponseString, 200);
-  final fakeWeatherResponse = http.Response(KstFakeWeatherResponseString, 200);
-
-  when(mockClient
-          .get(Uri.https(kstBaseUrl, kstLocationPath, {'query': '$fakeCity'})))
-      .thenAnswer((_) async => fakeLocationResponse);
-
-  when(mockClient.get(Uri.https(kstBaseUrl, kstLocationPath, {'query': ''})))
-      .thenAnswer((_) async => http.Response('Not Found', 404));
-
-  when(mockClient.get(Uri.https(kstBaseUrl, '/api/location/$fakeWoeid/')))
-      .thenAnswer((_) async => fakeWeatherResponse);
-
-  when(mockClient.get(Uri.https(kstBaseUrl, "/api/location/''/")))
-      .thenAnswer((_) async => http.Response('Not Found', 404));
+  final mockHelper = MockClientHelper();
+  final mockClient = mockHelper.getMockClient;
 
   Widget setUpWidget(Widget widget) {
     return BlocProvider(

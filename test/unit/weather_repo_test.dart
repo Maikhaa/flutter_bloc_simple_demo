@@ -1,36 +1,11 @@
-import 'package:flutter_bloc_simple_demo/constants.dart';
 import 'package:flutter_bloc_simple_demo/models/weather_model.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' as http;
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-
 import 'package:flutter_bloc_simple_demo/data/weather_repo.dart';
+import '../mock_helpers/mock_client_helper.dart';
 
-import 'weather_repo_test.mocks.dart';
-
-@GenerateMocks([http.Client])
 void main() {
-  final mockClient = MockClient();
-  final fakeCity = 'london';
-  final fakeWoeid = 44418;
-  final fakeLocationResponse =
-      http.Response(KstFakeLocationResponseString, 200);
-  final fakeWeatherResponse = http.Response(KstFakeWeatherResponseString, 200);
-
-  when(mockClient
-          .get(Uri.https(kstBaseUrl, kstLocationPath, {'query': '$fakeCity'})))
-      .thenAnswer((_) async => fakeLocationResponse);
-
-  when(mockClient.get(Uri.https(kstBaseUrl, kstLocationPath, {'query': ''})))
-      .thenAnswer((_) async => http.Response('Not Found', 404));
-
-  when(mockClient.get(Uri.https(kstBaseUrl, '/api/location/$fakeWoeid/')))
-      .thenAnswer((_) async => fakeWeatherResponse);
-
-  when(mockClient.get(Uri.https(kstBaseUrl, "/api/location/''/")))
-      .thenAnswer((_) async => http.Response('Not Found', 404));
-
+  final mockHelper = MockClientHelper();
+  final mockClient = mockHelper.getMockClient;
   final weatherRepo = WeatherRepo(mockClient);
 
   group('getLocationResponse', () {
@@ -40,8 +15,8 @@ void main() {
     });
     test('Returns locationResponse when given city', () async {
       var locationResponse =
-          weatherRepo.getLocationResponse(fakeCity);
-      expect(await locationResponse, fakeLocationResponse);
+          weatherRepo.getLocationResponse(mockHelper.fakeCity);
+      expect(await locationResponse, mockHelper.fakeLocationResponse);
     });
   });
 
@@ -51,8 +26,8 @@ void main() {
       expect(woeid, 0);
     });
     test('Returns woeid when given a locationResponse', () async {
-      var woeid = weatherRepo.findWoeid(fakeLocationResponse);
-      expect(woeid, fakeWoeid);
+      var woeid = weatherRepo.findWoeid(mockHelper.fakeLocationResponse);
+      expect(woeid, mockHelper.fakeWoeid);
     });
   });
 
@@ -63,8 +38,8 @@ void main() {
     });
     test('Returns weatherResponse when given a woeid', () async {
       var weatherResponse =
-          weatherRepo.getWeatherResponse(fakeWoeid);
-      expect(await weatherResponse, fakeWeatherResponse);
+          weatherRepo.getWeatherResponse(mockHelper.fakeWoeid);
+      expect(await weatherResponse, mockHelper.fakeWeatherResponse);
     });
   });
 
@@ -74,7 +49,8 @@ void main() {
       expect(weatherModel, null);
     });
     test('Returns weatherModel when given a weatherResponse', () async {
-      var weatherModel = weatherRepo.createWeatherModel(fakeWeatherResponse);
+      var weatherModel =
+          weatherRepo.createWeatherModel(mockHelper.fakeWeatherResponse);
       expect(weatherModel, isA<WeatherModel>());
     });
   });
