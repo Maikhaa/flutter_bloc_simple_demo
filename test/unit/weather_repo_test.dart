@@ -8,6 +8,17 @@ void main() {
   final mockClient = mockHelper.getMockClient;
   final weatherRepo = WeatherRepo(mockClient);
 
+  group('formatCity', () {
+    test('Returns empty string, when given empty string', () {
+      var formattedCity = weatherRepo.formatCity('');
+      expect(formattedCity, '');
+    });
+    test('Returns trimmed, lowercase when given uppercase, untrimmed', () {
+      var formattedCity = weatherRepo.formatCity('London ');
+      expect(formattedCity, 'london');
+    });
+  });
+
   group('getLocationResponse', () {
     test('Throws exception when given an empty string', () async {
       var locationResponse = weatherRepo.getLocationResponse('');

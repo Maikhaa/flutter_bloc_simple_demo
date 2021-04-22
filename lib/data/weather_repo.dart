@@ -10,12 +10,18 @@ class WeatherRepo {
   WeatherRepo(this.client);
 
   Future<WeatherModel?> getWeather(String city) async {
-    final locationResponse = await getLocationResponse(city);
+    final formattedCity = formatCity(city);
+    final locationResponse = await getLocationResponse(formattedCity);
     final woeid = findWoeid(locationResponse);
     final weatherResponse = await getWeatherResponse(woeid);
     final weatherModel = createWeatherModel(weatherResponse);
 
     return weatherModel;
+  }
+
+  String formatCity(String city) {
+    if (city == '') return '';
+    return city.trim().toLowerCase();
   }
 
   Future<http.Response> getLocationResponse(String city) async {
