@@ -8,8 +8,6 @@ class WeatherState extends Equatable {
 
   const WeatherState({this.status, this.weather});
 
-  WeatherModel? get getWeather => weather;
-
   WeatherState copyWith({
     WeatherStatus? status,
     WeatherModel? weather

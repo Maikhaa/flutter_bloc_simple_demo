@@ -5,7 +5,7 @@ import 'package:flutter_bloc_simple_demo/constants.dart';
 import 'mock_client_helper.mocks.dart';
 
 @GenerateMocks([http.Client])
-class MockClientHelper{
+class ClientMockHelper{
   final mockClient = MockClient();
   final fakeCity = 'london';
   final fakeWoeid = 44418;
