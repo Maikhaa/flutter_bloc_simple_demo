@@ -19,19 +19,42 @@ class SearchBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(right: kstSmallPadding, left: kstSmallPadding),
+        padding: const EdgeInsets.only(
+            right: kstSmallPadding, left: kstSmallPadding),
         child: Row(children: [
           Expanded(
             flex: 9,
-            child: TextField(
-              key: Key('search-input'),
-              controller: searchCityController,
-              autofocus: true,
-              decoration: InputDecoration(
-                hintText: "Search cities",
-                border: InputBorder.none,
-                hintStyle: TextStyle(color: Colors.blueGrey),
-              ),
+            child: BlocBuilder<WeatherBloc, WeatherState>(
+              builder: (context, state) {
+                switch (state.status) {
+                  case WeatherStatus.loaded:
+                    return TextField(
+                      onTap: () {
+                        weatherBloc.add(ResetWeather());
+                        searchCityController.clear();
+                      },
+                      key: Key('search-input'),
+                      controller: searchCityController,
+                      autofocus: true,
+                      decoration: InputDecoration(
+                        hintText: "Search cities",
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(color: Colors.blueGrey),
+                      ),
+                    );
+                  default:
+                    return TextField(
+                      key: Key('search-input'),
+                      controller: searchCityController,
+                      autofocus: true,
+                      decoration: InputDecoration(
+                        hintText: "Search cities",
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(color: Colors.blueGrey),
+                      ),
+                    );
+                }
+              },
             ),
           ),
           Expanded(
