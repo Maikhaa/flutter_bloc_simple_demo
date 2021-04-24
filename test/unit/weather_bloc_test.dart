@@ -13,26 +13,32 @@ void main() {
     expect(result, WeatherState(status: WeatherStatus.initial));
   });
 
-  test("WeatherBloc maps getWeather event to loading state", () {
+  test("WeatherBloc maps GetWeather event to loading state", () {
     final weatherEvent = GetWeather("london");
     var result = weatherBloc.mapEventToState(weatherEvent);
     expect(result, emits(WeatherState(status: WeatherStatus.loading)));
   });
 
-  test("WeatherBloc maps getWeather event to loaded state", () async {
+  test("WeatherBloc maps GetWeather event to loaded state", () async {
     final weatherEvent = GetWeather("london");
     final result = weatherBloc.mapEventToState(weatherEvent);
-    var model = await mockWeatherRepo.getWeather('london');
+    var fakeWeatherModel = await mockWeatherRepo.getWeather('london');
     expectLater(
         result,
         emitsThrough(
-            WeatherState(status: WeatherStatus.loaded, weather: model)));
+            WeatherState(status: WeatherStatus.loaded, weather: fakeWeatherModel)));
   });
 
-  test("WeatherBloc maps getWeather event to error state", () {
+  test("WeatherBloc maps GetWeather event to error state", () {
     final weatherEvent = GetWeather("");
     var result = weatherBloc.mapEventToState(weatherEvent);
     expect(result, emitsThrough(WeatherState(status: WeatherStatus.error)));
+  });
+
+  test("WeatherBloc maps ResetWeather event to initial state", () {
+    final weatherEvent = ResetWeather();
+    var result = weatherBloc.mapEventToState(weatherEvent);
+    expect(result, emitsThrough(WeatherState(status: WeatherStatus.initial)));
   });
 
   tearDown(() {
