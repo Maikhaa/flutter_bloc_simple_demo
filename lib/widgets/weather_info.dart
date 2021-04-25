@@ -6,7 +6,7 @@ import 'package:flutter_bloc_simple_demo/services/temp_converter.dart';
 class WeatherInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final tempConverter = TempConverter();
+    final converter = TempConverter();
     return BlocBuilder<WeatherBloc, WeatherState>(
       builder: (BuildContext context, state) {
         switch (state.status) {
@@ -14,6 +14,7 @@ class WeatherInfo extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           case WeatherStatus.loadedMetric:
             return Center(
+              key: Key("weather-info"),
               child: Column(key: Key("weather-info"), children: [
                 Text(state.weather!.date),
                 Text(state.weather!.city),
@@ -24,9 +25,12 @@ class WeatherInfo extends StatelessWidget {
             return Center(
               child: Container(
                 key: Key("weather-info"),
-                child: Text(
-                    tempConverter.toF(state.weather!.temp).toStringAsFixed(2) +
-                        ' °F'),
+                child: Column(key: Key("weather-info"), children: [
+                  Text(state.weather!.date),
+                  Text(state.weather!.city),
+                  Text(converter.toF(state.weather!.temp).toStringAsFixed(2) +
+                      ' °F'),
+                ]),
               ),
             );
           default:
