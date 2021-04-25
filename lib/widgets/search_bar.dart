@@ -13,17 +13,13 @@ class SearchBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(
-          color: Colors.grey,
-        ),
-        borderRadius: BorderRadius.circular(4.0),
+        borderRadius: BorderRadius.circular(3.0),
       ),
       child: Padding(
         padding: const EdgeInsets.only(
             right: kstSmallPadding, left: kstSmallPadding),
         child: Row(children: [
           Expanded(
-            flex: 9,
             child: BlocBuilder<WeatherBloc, WeatherState>(
               builder: (context, state) {
                 switch (state.status) {
@@ -40,7 +36,6 @@ class SearchBar extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: "Search cities",
                         border: InputBorder.none,
-                        hintStyle: TextStyle(color: Colors.blueGrey),
                       ),
                     );
                   default:
@@ -51,26 +46,31 @@ class SearchBar extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: "Search cities",
                         border: InputBorder.none,
-                        hintStyle: TextStyle(color: Colors.blueGrey),
                       ),
                     );
                 }
               },
             ),
           ),
-          Expanded(
-            flex: 1,
+          Container(
+            width: kstSmallBox,
             child: BlocBuilder<WeatherBloc, WeatherState>(
                 builder: (context, state) {
               switch (state.status) {
                 case WeatherStatus.loading:
-                  return Container(
-                      child: CircularProgressIndicator(strokeWidth: 3.0));
+                  return SizedBox(
+                    child: CircularProgressIndicator(strokeWidth: 4.0),
+                    height: kstSmallBox,
+                    width: kstSmallBox,
+                  );
                 case WeatherStatus.loadedMetric:
                 case WeatherStatus.loadedImperial:
                   return IconButton(
                     key: Key('reset-button'),
-                    icon: Icon(Icons.close),
+                    icon: Icon(
+                      Icons.close,
+                      color: Colors.blueGrey,
+                    ),
                     onPressed: () {
                       weatherBloc.add(ResetWeather());
                       searchCityController.clear();
@@ -79,7 +79,10 @@ class SearchBar extends StatelessWidget {
                 default:
                   return IconButton(
                     key: Key('search-button'),
-                    icon: Icon(Icons.search),
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.blueGrey,
+                    ),
                     onPressed: () {
                       weatherBloc.add(GetWeather(searchCityController.text));
                       FocusScope.of(context).requestFocus(FocusNode());
