@@ -13,8 +13,9 @@ class WeatherRepo {
     final formattedCity = formatCity(city);
     final locationResponse = await getLocationResponse(formattedCity);
     final woeid = findWoeid(locationResponse);
+    final cityName = findCityName(locationResponse);
     final weatherResponse = await getWeatherResponse(woeid);
-    final weatherModel = createWeatherModel(weatherResponse);
+    final weatherModel = createWeatherModel(weatherResponse, cityName);
 
     return weatherModel;
   }
@@ -40,6 +41,13 @@ class WeatherRepo {
     return woeid;
   }
 
+  String findCityName(http.Response? locationResponse) {
+    if (locationResponse == null) return '';
+    var locationJson = jsonDecode(locationResponse.body);
+    var cityName = locationJson[0]['title'];
+    return cityName;
+  }
+
   Future<http.Response> getWeatherResponse(woeid) async {
     final weatherResponse =
         await client.get(Uri.https(kstBaseUrl, '/api/location/$woeid/'));
@@ -49,9 +57,11 @@ class WeatherRepo {
         : throw Exception('Failed to get weather info');
   }
 
-  WeatherModel? createWeatherModel(http.Response? weatherResponse) {
+  WeatherModel? createWeatherModel(
+      http.Response? weatherResponse, String cityName) {
     if (weatherResponse == null) return null;
     var weatherJson = jsonDecode(weatherResponse.body);
+    weatherJson['consolidated_weather'][0]['city'] = cityName;
     var consolidatedWeatherJson = weatherJson['consolidated_weather'][0];
     return WeatherModel.fromJson(consolidatedWeatherJson);
   }

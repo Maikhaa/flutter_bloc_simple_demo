@@ -10,6 +10,7 @@ class WeatherRepoMockHelper {
   final mockWeatherRepo = MockWeatherRepo();
 
   final fakeWeatherModel = WeatherModel(
+      city: 'London',
       date: '2021-04-21',
       weather: 'Heavy Cloud',
       temp: 13.72,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_simple_demo/widgets/refresh_button.dart';
 import 'package:flutter_bloc_simple_demo/widgets/switch_units.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_bloc_simple_demo/bloc/weather_bloc.dart';
@@ -45,7 +46,8 @@ class Home extends StatelessWidget {
             children: [
               Expanded(flex: 1, child: SearchBar()),
               Expanded(flex: 1, child: SwitchUnits()),
-              Expanded(flex: 8, child: WeatherInfo()),
+              Expanded(flex: 7, child: WeatherInfo()),
+              Expanded(flex: 1, child: RefreshButton()),
             ],
           ),
         ),

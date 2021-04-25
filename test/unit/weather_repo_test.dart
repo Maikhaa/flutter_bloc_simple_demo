@@ -4,8 +4,8 @@ import 'package:flutter_bloc_simple_demo/data/weather_repo.dart';
 import '../mock_helpers/client_mock_helper.dart';
 
 void main() {
-  final mockHelper = ClientMockHelper();
-  final mockClient = mockHelper.getMockClient;
+  final clientMockHelper = ClientMockHelper();
+  final mockClient = clientMockHelper.getMockClient;
   final weatherRepo = WeatherRepo(mockClient);
 
   group('formatCity', () {
@@ -26,8 +26,8 @@ void main() {
     });
     test('Returns locationResponse when given city', () async {
       var locationResponse =
-          weatherRepo.getLocationResponse(mockHelper.fakeCity);
-      expect(await locationResponse, mockHelper.fakeLocationResponse);
+          weatherRepo.getLocationResponse(clientMockHelper.fakeCity);
+      expect(await locationResponse, clientMockHelper.fakeLocationResponse);
     });
   });
 
@@ -37,8 +37,19 @@ void main() {
       expect(woeid, 0);
     });
     test('Returns woeid when given a locationResponse', () async {
-      var woeid = weatherRepo.findWoeid(mockHelper.fakeLocationResponse);
-      expect(woeid, mockHelper.fakeWoeid);
+      var woeid = weatherRepo.findWoeid(clientMockHelper.fakeLocationResponse);
+      expect(woeid, clientMockHelper.fakeWoeid);
+    });
+  });
+
+  group('findCityName', () {
+    test('Returns empty string when given a null value', () async {
+      var cityName = weatherRepo.findCityName(null);
+      expect(cityName, '');
+    });
+    test('Returns cityName when given a locationResponse', () async {
+      var cityName = weatherRepo.findCityName(clientMockHelper.fakeLocationResponse);
+      expect(cityName, clientMockHelper.fakeCity);
     });
   });
 
@@ -49,19 +60,19 @@ void main() {
     });
     test('Returns weatherResponse when given a woeid', () async {
       var weatherResponse =
-          weatherRepo.getWeatherResponse(mockHelper.fakeWoeid);
-      expect(await weatherResponse, mockHelper.fakeWeatherResponse);
+          weatherRepo.getWeatherResponse(clientMockHelper.fakeWoeid);
+      expect(await weatherResponse, clientMockHelper.fakeWeatherResponse);
     });
   });
 
   group('createWeatherModel', () {
-    test('Returns null when given a null value', () async {
-      var weatherModel = weatherRepo.createWeatherModel(null);
+    test('Returns null when given a null value and an empty string', () async {
+      var weatherModel = weatherRepo.createWeatherModel(null, '');
       expect(weatherModel, null);
     });
-    test('Returns weatherModel when given a weatherResponse', () async {
-      var weatherModel =
-          weatherRepo.createWeatherModel(mockHelper.fakeWeatherResponse);
+    test('Returns weatherModel when given a weatherResponse and a city', () async {
+      var weatherModel = weatherRepo.createWeatherModel(
+          clientMockHelper.fakeWeatherResponse, clientMockHelper.fakeCity);
       expect(weatherModel, isA<WeatherModel>());
     });
   });

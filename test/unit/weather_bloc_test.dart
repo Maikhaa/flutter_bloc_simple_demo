@@ -4,8 +4,8 @@ import 'package:test/test.dart';
 import '../mock_helpers/weather_repo_mock_helper.dart';
 
 void main() {
-  final mockHelper = WeatherRepoMockHelper();
-  final mockWeatherRepo = mockHelper.getMockWeatherRepo;
+  final weatherMockHelper = WeatherRepoMockHelper();
+  final mockWeatherRepo = weatherMockHelper.getMockWeatherRepo;
   final weatherBloc = WeatherBloc(mockWeatherRepo);
 
   test('WeatherBloc initial state is correct', () {
