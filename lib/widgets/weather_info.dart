@@ -14,10 +14,11 @@ class WeatherInfo extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           case WeatherStatus.loadedMetric:
             return Center(
-              child: Container(
-                key: Key("weather-info"),
-                child: Text(state.weather!.temp.toStringAsFixed(2) + ' °C'),
-              ),
+              child: Column(key: Key("weather-info"), children: [
+                Text(state.weather!.date),
+                Text(state.weather!.city),
+                Text(state.weather!.temp.toStringAsFixed(2) + ' °C'),
+              ]),
             );
           case WeatherStatus.loadedImperial:
             return Center(

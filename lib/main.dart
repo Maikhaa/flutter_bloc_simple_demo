@@ -24,9 +24,16 @@ class WeatherApp extends StatelessWidget {
       create: (BuildContext context) => WeatherBloc(WeatherRepo(http.Client())),
       child: MaterialApp(
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.lightBlue,
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.blueGrey,
+          scaffoldBackgroundColor: Colors.cyan,
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: 'Roboto',
+          textTheme: TextTheme(
+            bodyText2: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+            ),
+          ),
         ),
         home: SafeArea(child: Home()),
       ),

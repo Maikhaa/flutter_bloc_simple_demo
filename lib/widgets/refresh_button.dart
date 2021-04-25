@@ -15,7 +15,7 @@ class RefreshButton extends StatelessWidget {
             return Center(
               child: Ink(
                 decoration: const ShapeDecoration(
-                  color: Colors.lightBlue,
+                  color: Colors.blueGrey,
                   shape: CircleBorder(),
                 ),
                 child: IconButton(
