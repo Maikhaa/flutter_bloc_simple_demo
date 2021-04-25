@@ -10,12 +10,14 @@ class WeatherRepoMockHelper {
   final mockWeatherRepo = MockWeatherRepo();
 
   final fakeWeatherModel = WeatherModel(
-      city: 'London',
-      date: '2021-04-21',
-      weather: 'Heavy Cloud',
-      temp: 13.72,
-      maxTemp: 13.81,
-      minTemp: 5.84);
+    city: 'London',
+    date: '2021-04-21',
+    weather: 'Heavy Cloud',
+    imgCode: 'hc',
+    temp: 13.72,
+    maxTemp: 13.81,
+    minTemp: 5.84,
+  );
 
   MockWeatherRepo get getMockWeatherRepo {
     when(mockWeatherRepo.getWeather("london"))

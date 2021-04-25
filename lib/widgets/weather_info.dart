@@ -34,7 +34,14 @@ class WeatherInfo extends StatelessWidget {
                     SizedBox(width: kstRegularPadding),
                     Text(tempUtil.getTempInC(state.weather!.maxTemp)),
                   ],
-                )
+                ),
+                SizedBox(
+                  height: kstLargeBox,
+                  width: kstLargeBox,
+                  child: Image.network(
+                    'https://www.metaweather.com/static/img/weather/png/${state.weather!.imgCode}.png',
+                  ),
+                ),
               ]),
             );
           case WeatherStatus.loadedImperial:
@@ -59,7 +66,14 @@ class WeatherInfo extends StatelessWidget {
                       SizedBox(width: kstRegularPadding),
                       Text(tempUtil.getTempInF(state.weather!.maxTemp)),
                     ],
-                  )
+                  ),
+                  SizedBox(
+                    height: kstLargeBox,
+                    width: kstLargeBox,
+                    child: Image.network(
+                      'https://www.metaweather.com/static/img/weather/png/${state.weather!.imgCode}.png',
+                    ),
+                  ),
                 ]),
               ),
             );

@@ -13,3 +13,4 @@ const double kstSmallPadding = 15.0;
 const double kstRegularPadding = 40.0;
 const double kstLargePadding = 60.0;
 const double kstSmallBox = 30.0;
+const double kstLargeBox = 180.0;
