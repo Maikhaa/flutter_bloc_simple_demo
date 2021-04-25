@@ -12,7 +12,13 @@ class WeatherInfo extends StatelessWidget {
       builder: (BuildContext context, state) {
         switch (state.status) {
           case WeatherStatus.loading:
-            return Center(child: CircularProgressIndicator());
+            return Center(
+                child: SizedBox(
+                    height: kstRegularBox,
+                    width: kstRegularBox,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 8.0,
+                    )));
           case WeatherStatus.loadedMetric:
             return Center(
               key: Key("weather-info"),
@@ -22,7 +28,7 @@ class WeatherInfo extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Text(state.weather!.city),
-                SizedBox(height: kstLargePadding),
+                SizedBox(height: kstRegularPadding),
                 Text(
                   tempUtil.getTempInC(state.weather!.temp),
                   style: Theme.of(context).textTheme.headline1,
@@ -30,11 +36,12 @@ class WeatherInfo extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(tempUtil.getTempInC(state.weather!.minTemp)),
+                    Text('↓' + tempUtil.getTempInC(state.weather!.minTemp)),
                     SizedBox(width: kstRegularPadding),
-                    Text(tempUtil.getTempInC(state.weather!.maxTemp)),
+                    Text('↑' + tempUtil.getTempInC(state.weather!.maxTemp)),
                   ],
                 ),
+                SizedBox(height: kstRegularPadding),
                 SizedBox(
                   height: kstLargeBox,
                   width: kstLargeBox,
@@ -42,6 +49,8 @@ class WeatherInfo extends StatelessWidget {
                     'https://www.metaweather.com/static/img/weather/png/${state.weather!.imgCode}.png',
                   ),
                 ),
+                SizedBox(height: kstSmallPadding),
+                Text(state.weather!.weather),
               ]),
             );
           case WeatherStatus.loadedImperial:
@@ -54,7 +63,7 @@ class WeatherInfo extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                   Text(state.weather!.city),
-                  SizedBox(height: kstLargePadding),
+                  SizedBox(height: kstRegularPadding),
                   Text(
                     tempUtil.getTempInF(state.weather!.temp),
                     style: Theme.of(context).textTheme.headline1,
@@ -62,11 +71,12 @@ class WeatherInfo extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(tempUtil.getTempInF(state.weather!.minTemp)),
+                      Text('↓' + tempUtil.getTempInF(state.weather!.minTemp)),
                       SizedBox(width: kstRegularPadding),
-                      Text(tempUtil.getTempInF(state.weather!.maxTemp)),
+                      Text('↑' + tempUtil.getTempInF(state.weather!.maxTemp)),
                     ],
                   ),
+                  SizedBox(height: kstRegularPadding),
                   SizedBox(
                     height: kstLargeBox,
                     width: kstLargeBox,
@@ -74,12 +84,25 @@ class WeatherInfo extends StatelessWidget {
                       'https://www.metaweather.com/static/img/weather/png/${state.weather!.imgCode}.png',
                     ),
                   ),
+                  SizedBox(height: kstSmallPadding),
+                  Text(state.weather!.weather),
                 ]),
               ),
             );
           default:
             return Center(
-                child: Container(key: Key("weather"), child: Text("Weather")));
+              child: Column(children: [
+                Text("Weather\nApp",
+                    style: Theme.of(context).textTheme.headline1),
+                SizedBox(
+                  height: 120,
+                  width: 120,
+                  child: Image.network(
+                    'https://www.metaweather.com/static/img/weather/png/s.png',
+                  ),
+                ),
+              ]),
+            );
         }
       },
     );
