@@ -30,9 +30,20 @@ class WeatherApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
           fontFamily: 'Roboto',
           textTheme: TextTheme(
-            bodyText2: TextStyle(
-              fontSize: 20,
+            headline1: TextStyle(
+              fontSize: 52,
               color: Colors.white,
+              fontWeight: FontWeight.w400,
+            ),
+            bodyText2: TextStyle(
+              fontSize: 22,
+              color: Colors.white,
+              fontWeight: FontWeight.w300,
+            ),
+            bodyText1: TextStyle(
+              fontSize: 16,
+              color: Colors.white,
+              fontWeight: FontWeight.w300,
             ),
           ),
         ),

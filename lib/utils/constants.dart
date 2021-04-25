@@ -10,3 +10,5 @@ const String KstFakeWeatherResponseString =
 
 // UI
 const double kstSmallPadding = 15.0;
+const double kstRegularPadding = 40.0;
+const double kstLargePadding = 60.0;

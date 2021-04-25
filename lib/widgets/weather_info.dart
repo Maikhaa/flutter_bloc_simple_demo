@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_simple_demo/bloc/weather_bloc.dart';
+import 'package:flutter_bloc_simple_demo/utils/constants.dart';
 import 'package:flutter_bloc_simple_demo/utils/temp_util.dart';
 
 class WeatherInfo extends StatelessWidget {
@@ -16,14 +17,21 @@ class WeatherInfo extends StatelessWidget {
             return Center(
               key: Key("weather-info"),
               child: Column(key: Key("weather-info"), children: [
-                Text(state.weather!.date),
+                Text(
+                  state.weather!.date,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
                 Text(state.weather!.city),
-                Text(tempUtil.getTempInC(state.weather!.temp)),
+                SizedBox(height: kstLargePadding),
+                Text(
+                  tempUtil.getTempInC(state.weather!.temp),
+                  style: Theme.of(context).textTheme.headline1,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(tempUtil.getTempInC(state.weather!.minTemp)),
-                    SizedBox(width: 50),
+                    SizedBox(width: kstRegularPadding),
                     Text(tempUtil.getTempInC(state.weather!.maxTemp)),
                   ],
                 )
@@ -34,14 +42,21 @@ class WeatherInfo extends StatelessWidget {
               child: Container(
                 key: Key("weather-info"),
                 child: Column(key: Key("weather-info"), children: [
-                  Text(state.weather!.date),
+                  Text(
+                    state.weather!.date,
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
                   Text(state.weather!.city),
-                  Text(tempUtil.getTempInF(state.weather!.temp)),
+                  SizedBox(height: kstLargePadding),
+                  Text(
+                    tempUtil.getTempInF(state.weather!.temp),
+                    style: Theme.of(context).textTheme.headline1,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(tempUtil.getTempInF(state.weather!.minTemp)),
-                      SizedBox(width: 50),
+                      SizedBox(width: kstRegularPadding),
                       Text(tempUtil.getTempInF(state.weather!.maxTemp)),
                     ],
                   )
