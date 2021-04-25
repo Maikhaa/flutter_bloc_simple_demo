@@ -25,8 +25,8 @@ void main() {
     var fakeWeatherModel = await mockWeatherRepo.getWeather('london');
     expectLater(
         result,
-        emitsThrough(
-            WeatherState(status: WeatherStatus.loaded, weather: fakeWeatherModel)));
+        emitsThrough(WeatherState(
+            status: WeatherStatus.loadedMetric, weather: fakeWeatherModel)));
   });
 
   test("WeatherBloc maps GetWeather event to error state", () {

@@ -1,9 +1,9 @@
 class WeatherModel {
   final String date;
   final String weather;
-  final String temp;
-  final String maxTemp;
-  final String minTemp;
+  final double temp;
+  final double maxTemp;
+  final double minTemp;
 
   WeatherModel(
       {required this.date,
@@ -16,8 +16,8 @@ class WeatherModel {
     return WeatherModel(
         date: json['applicable_date'],
         weather: json['weather_state_name'],
-        temp: json['the_temp'].toStringAsFixed(2),
-        maxTemp: json['max_temp'].toStringAsFixed(2),
-        minTemp: json['min_temp'].toStringAsFixed(2));
+        temp: json['the_temp'],
+        maxTemp: json['max_temp'],
+        minTemp: json['min_temp']);
   }
 }

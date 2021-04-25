@@ -27,7 +27,8 @@ class SearchBar extends StatelessWidget {
             child: BlocBuilder<WeatherBloc, WeatherState>(
               builder: (context, state) {
                 switch (state.status) {
-                  case WeatherStatus.loaded:
+                  case WeatherStatus.loadedMetric:
+                  case WeatherStatus.loadedImperial:
                     return TextField(
                       onTap: () {
                         weatherBloc.add(ResetWeather());
@@ -65,7 +66,8 @@ class SearchBar extends StatelessWidget {
                 case WeatherStatus.loading:
                   return Container(
                       child: CircularProgressIndicator(strokeWidth: 3.0));
-                case WeatherStatus.loaded:
+                case WeatherStatus.loadedMetric:
+                case WeatherStatus.loadedImperial:
                   return IconButton(
                     key: Key('reset-button'),
                     icon: Icon(Icons.close),

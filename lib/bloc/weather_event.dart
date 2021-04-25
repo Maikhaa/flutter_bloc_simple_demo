@@ -17,3 +17,8 @@ class ResetWeather extends WeatherEvent{
   @override
   List<Object> get props => [];
 }
+
+class ToggleWeatherUnits extends WeatherEvent{
+  @override
+  List<Object> get props => [];
+}

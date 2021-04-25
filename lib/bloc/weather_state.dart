@@ -1,6 +1,6 @@
 part of 'weather_bloc.dart';
 
-enum WeatherStatus { initial, loading, loaded, error }
+enum WeatherStatus { initial, loading, loadedMetric, loadedImperial, error }
 
 class WeatherState extends Equatable {
   final WeatherStatus? status;
