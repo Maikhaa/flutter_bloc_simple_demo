@@ -1,18 +1,25 @@
-import 'package:flutter_bloc_simple_demo/services/temp_converter.dart';
+import 'package:flutter_bloc_simple_demo/utils/temp_util.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('convertToF', () {
-    test('Returns 32.0F if temperature is 0.0C', () {
-      var tempConverter = TempConverter();
-      var result = tempConverter.toF(0.0);
-      expect(result, 32.0);
+  final tempUtil = TempUtil();
+
+  group('getTempInF', () {
+    test('Returns 32.00 °F if temperature is 0.0 °C', () {
+      var result = tempUtil.getTempInF(0.0);
+      expect(result, '32.00 °F');
     });
 
-    test('Returns 50.0F if temperature is 10.0C', () {
-      var tempConverter = TempConverter();
-      var result = tempConverter.toF(10.0);
-      expect(result, 50.0);
+    test('Returns 50.0 °F if temperature is 10.0 °C', () {
+      var result = tempUtil.getTempInF(10.0);
+      expect(result, '50.00 °F');
+    });
+  });
+
+  group('getTempInC', () {
+    test('Returns 20.00 °C if temperature is 20.0003 °C', () {
+      var result = tempUtil.getTempInC(20.0003);
+      expect(result, '20.00 °C');
     });
   });
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_simple_demo/constants.dart';
+import 'package:flutter_bloc_simple_demo/utils/constants.dart';
 import '../bloc/weather_bloc.dart';
 
 class SearchBar extends StatelessWidget {
