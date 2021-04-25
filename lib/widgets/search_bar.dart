@@ -82,6 +82,7 @@ class SearchBar extends StatelessWidget {
                     icon: Icon(Icons.search),
                     onPressed: () {
                       weatherBloc.add(GetWeather(searchCityController.text));
+                      FocusScope.of(context).requestFocus(FocusNode());
                     },
                   );
               }
