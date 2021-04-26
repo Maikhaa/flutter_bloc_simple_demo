@@ -33,6 +33,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       } catch (_) {
         print(_);
         yield state.copyWith(status: WeatherStatus.error);
+        return;
       }
     }
 

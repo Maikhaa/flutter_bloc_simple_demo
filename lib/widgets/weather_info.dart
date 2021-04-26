@@ -121,6 +121,11 @@ class WeatherInfo extends StatelessWidget {
                     ),
                   ]),
             );
+          case WeatherStatus.error:
+            return Center(child: Padding(
+              padding: const EdgeInsets.all(kstRegularPadding),
+              child: Text('Please try a different city\nor check your network connection.'),
+            ));
           default:
             return Center(
               child: Column(children: [
