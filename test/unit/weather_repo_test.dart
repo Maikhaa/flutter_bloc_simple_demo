@@ -29,7 +29,7 @@ void main() {
     });
     test('Returns locationResponse when given city', () async {
       var locationResponse =
-          weatherRepo.getLocationResponse(clientMockHelper.fakeCity);
+          weatherRepo.getLocationResponse(clientMockHelper.fakeCitySent);
       expect(await locationResponse, clientMockHelper.fakeLocationResponse);
     });
   });
@@ -52,7 +52,7 @@ void main() {
     });
     test('Returns cityName when given a locationResponse', () async {
       var cityName = weatherRepo.findCityName(clientMockHelper.fakeLocationResponse);
-      expect(cityName, clientMockHelper.fakeCity);
+      expect(cityName, clientMockHelper.fakeCityResponse);
     });
   });
 
@@ -75,7 +75,7 @@ void main() {
     });
     test('Returns weatherModel when given a weatherResponse and a city', () async {
       var weatherModel = weatherRepo.createWeatherModel(
-          clientMockHelper.fakeWeatherResponse, clientMockHelper.fakeCity);
+          clientMockHelper.fakeWeatherResponse, clientMockHelper.fakeCitySent);
       expect(weatherModel, isA<WeatherModel>());
     });
   });

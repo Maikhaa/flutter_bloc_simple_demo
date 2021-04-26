@@ -10,14 +10,15 @@ import 'client_mock_helper.mocks.dart';
 @GenerateMocks([http.Client])
 class ClientMockHelper{
   final mockClient = MockClient();
-  final fakeCity = 'London';
+  final fakeCitySent = 'london';
+  final fakeCityResponse = 'London';
   final fakeWoeid = 44418;
   final fakeLocationResponse = http.Response(KstFakeLocationResponseString, 200);
   final fakeWeatherResponse = http.Response(KstFakeWeatherResponseString, 200);
 
   MockClient get getMockClient {
     when(mockClient
-        .get(Uri.https(kstBaseUrl, kstLocationPath, {'query': '$fakeCity'})))
+        .get(Uri.https(kstBaseUrl, kstLocationPath, {'query': '$fakeCitySent'})))
         .thenAnswer((_) async => fakeLocationResponse);
 
     when(mockClient.get(Uri.https(kstBaseUrl, kstLocationPath, {'query': ''})))
