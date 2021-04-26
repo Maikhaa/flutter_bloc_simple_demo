@@ -20,6 +20,7 @@ class SwitchUnits extends StatelessWidget {
           case WeatherStatus.loadedImperial:
             return Container(
               child: SwitchListTile(
+                key: Key('switch-button'),
                 contentPadding: const EdgeInsets.all(0.0),
                 value: isCelsius,
                 onChanged: (value) {

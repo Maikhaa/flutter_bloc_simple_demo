@@ -27,7 +27,7 @@ class WeatherInfo extends StatelessWidget {
                     )));
           case WeatherStatus.loadedMetric:
             return Center(
-              key: Key("weather-info"),
+              key: Key("weather-info-metric"),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -75,6 +75,7 @@ class WeatherInfo extends StatelessWidget {
             );
           case WeatherStatus.loadedImperial:
             return Center(
+              key: Key("weather-info-imperial"),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
