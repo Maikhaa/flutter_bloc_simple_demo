@@ -27,8 +27,7 @@ void main() {
 
   testWidgets('Finds SwitchUnits in home', (WidgetTester tester) async {
     await tester.pumpWidget(setUpWidget(Home()));
-    var weatherInfo = find.byType(SwitchUnits);
-    expect(weatherInfo, findsOneWidget);
+    expect(find.byType(SwitchUnits), findsOneWidget);
   });
 
   testWidgets('SwitchUnits changes WeatherInfo from metric to imperial', (WidgetTester tester) async {
@@ -46,6 +45,6 @@ void main() {
     await tester.tap(switchButton);
     await tester.pump();
 
-    expectLater(find.byKey(Key('weather-info-imperial')), findsOneWidget);
+    expect(find.byKey(Key('weather-info-imperial')), findsOneWidget);
   });
 }

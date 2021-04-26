@@ -27,8 +27,7 @@ void main() {
 
   testWidgets('Finds SearchBar in home', (WidgetTester tester) async {
     await tester.pumpWidget(setUpWidget(Home()));
-    var weatherInfo = find.byType(SearchBar);
-    expect(weatherInfo, findsOneWidget);
+    expect(find.byType(SearchBar), findsOneWidget);
   });
 
   testWidgets('SearchBar changes to loaded state', (WidgetTester tester) async {
@@ -41,6 +40,6 @@ void main() {
     await tester.tap(searchButton);
     await tester.pump();
 
-    expectLater(find.byKey(Key('reset-button')), findsOneWidget);
+    expect(find.byKey(Key('reset-button')), findsOneWidget);
   });
 }

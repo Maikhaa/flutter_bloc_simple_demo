@@ -27,8 +27,7 @@ void main() {
 
   testWidgets('Finds WeatherInfo', (WidgetTester tester) async {
     await tester.pumpWidget(setUpWidget(Home()));
-    var weatherInfo = find.byType(WeatherInfo);
-    expect(weatherInfo, findsOneWidget);
+    expect(find.byType(WeatherInfo), findsOneWidget);
   });
 
   testWidgets('WeatherInfo changes to loaded state', (WidgetTester tester) async {
@@ -41,6 +40,6 @@ void main() {
     await tester.tap(searchButton);
     await tester.pump();
 
-    expectLater(find.byKey(Key('weather-info-metric')), findsOneWidget);
+    expect(find.byKey(Key('weather-info-metric')), findsOneWidget);
   });
 }

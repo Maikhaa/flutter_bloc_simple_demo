@@ -36,9 +36,7 @@ void main() {
     await tester.tap(searchButton);
     await tester.pump();
 
-    var weatherInfo = find.byType(RefreshButton);
-
-    expect(weatherInfo, findsOneWidget);
+    expect(find.byType(RefreshButton), findsOneWidget);
   });
 
   testWidgets('Finds weather info when pressed after info loaded',
