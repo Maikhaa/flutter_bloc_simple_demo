@@ -28,71 +28,97 @@ class WeatherInfo extends StatelessWidget {
           case WeatherStatus.loadedMetric:
             return Center(
               key: Key("weather-info"),
-              child: Column(children: [
-                Text(
-                  state.weather!.date,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                Text(state.weather!.city),
-                SizedBox(height: kstRegularPadding),
-                Text(
-                  tempUtil.getTempInC(state.weather!.temp),
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('↓' + tempUtil.getTempInC(state.weather!.minTemp)),
-                    SizedBox(width: kstRegularPadding),
-                    Text('↑' + tempUtil.getTempInC(state.weather!.maxTemp)),
-                  ],
-                ),
-                SizedBox(height: kstRegularPadding),
-                SizedBox(
-                  height: kstLargeBox,
-                  width: kstLargeBox,
-                  child: Image.network(
-                    kstImageBaseURL + state.weather!.imgCode + '.png',
-                  ),
-                ),
-                SizedBox(height: kstSmallPadding),
-                Text(state.weather!.weather),
-              ]),
+                    Column(
+                      children: [
+                        Text(
+                          state.weather!.date,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        Text(state.weather!.city),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          tempUtil.getTempInC(state.weather!.temp),
+                          style: Theme.of(context).textTheme.headline1,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('↓' +
+                                tempUtil.getTempInC(state.weather!.minTemp)),
+                            SizedBox(width: kstRegularPadding),
+                            Text('↑' +
+                                tempUtil.getTempInC(state.weather!.maxTemp)),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: kstLargeBox,
+                          width: kstLargeBox,
+                          child: Image.network(
+                            kstImageBaseURL + state.weather!.imgCode + '.png',
+                          ),
+                        ),
+                        SizedBox(height: kstSmallPadding),
+                        Text(state.weather!.weather),
+                      ],
+                    ),
+                  ]),
             );
           case WeatherStatus.loadedImperial:
             return Center(
-              child: Container(
-                child: Column(children: [
-                  Text(
-                    state.weather!.date,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  Text(state.weather!.city),
-                  SizedBox(height: kstRegularPadding),
-                  Text(
-                    tempUtil.getTempInF(state.weather!.temp),
-                    style: Theme.of(context).textTheme.headline1,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('↓' + tempUtil.getTempInF(state.weather!.minTemp)),
-                      SizedBox(width: kstRegularPadding),
-                      Text('↑' + tempUtil.getTempInF(state.weather!.maxTemp)),
-                    ],
-                  ),
-                  SizedBox(height: kstRegularPadding),
-                  SizedBox(
-                    height: kstLargeBox,
-                    width: kstLargeBox,
-                    child: Image.network(
-                      kstImageBaseURL + state.weather!.imgCode + '.png',
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          state.weather!.date,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        Text(state.weather!.city),
+                      ],
                     ),
-                  ),
-                  SizedBox(height: kstSmallPadding),
-                  Text(state.weather!.weather),
-                ]),
-              ),
+                    Column(
+                      children: [
+                        Text(
+                          tempUtil.getTempInF(state.weather!.temp),
+                          style: Theme.of(context).textTheme.headline1,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('↓' +
+                                tempUtil.getTempInF(state.weather!.minTemp)),
+                            SizedBox(width: kstRegularPadding),
+                            Text('↑' +
+                                tempUtil.getTempInF(state.weather!.maxTemp)),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: kstLargeBox,
+                          width: kstLargeBox,
+                          child: Image.network(
+                            kstImageBaseURL + state.weather!.imgCode + '.png',
+                          ),
+                        ),
+                        SizedBox(height: kstSmallPadding),
+                        Text(state.weather!.weather),
+                      ],
+                    ),
+                  ]),
             );
           default:
             return Center(

@@ -15,7 +15,7 @@ const double kstLargePadding = 60.0;
 
 const double kstSmallBox = 30.0;
 const double kstRegularBox = 60.0;
-const double kstLargeBox = 160.0;
+const double kstLargeBox = 125.0;
 
 // Images
 const String kstHomeImageURL = 'https://www.metaweather.com/static/img/weather/png/s.png';

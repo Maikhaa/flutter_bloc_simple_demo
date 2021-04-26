@@ -70,7 +70,7 @@ class Home extends StatelessWidget {
             children: [
               Expanded(flex: 1, child: SearchBar()),
               Expanded(flex: 1, child: SwitchUnits()),
-              Expanded(flex: 7, child: WeatherInfo()),
+              Expanded(flex: 8, child: WeatherInfo()),
               Expanded(flex: 1, child: RefreshButton()),
             ],
           ),
