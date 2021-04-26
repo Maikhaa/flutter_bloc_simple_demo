@@ -8,6 +8,7 @@ class WeatherInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tempUtil = TempUtil();
+
     return BlocBuilder<WeatherBloc, WeatherState>(
       builder: (BuildContext context, state) {
         switch (state.status) {
@@ -46,7 +47,7 @@ class WeatherInfo extends StatelessWidget {
                   height: kstLargeBox,
                   width: kstLargeBox,
                   child: Image.network(
-                    'https://www.metaweather.com/static/img/weather/png/${state.weather!.imgCode}.png',
+                    kstImageBaseURL + state.weather!.imgCode + '.png',
                   ),
                 ),
                 SizedBox(height: kstSmallPadding),
@@ -81,7 +82,7 @@ class WeatherInfo extends StatelessWidget {
                     height: kstLargeBox,
                     width: kstLargeBox,
                     child: Image.network(
-                      'https://www.metaweather.com/static/img/weather/png/${state.weather!.imgCode}.png',
+                      kstImageBaseURL + state.weather!.imgCode + '.png',
                     ),
                   ),
                   SizedBox(height: kstSmallPadding),
@@ -97,9 +98,7 @@ class WeatherInfo extends StatelessWidget {
                 SizedBox(
                   height: 120,
                   width: 120,
-                  child: Image.network(
-                    'https://www.metaweather.com/static/img/weather/png/s.png',
-                  ),
+                  child: Image.network(kstHomeImageURL),
                 ),
               ]),
             );
