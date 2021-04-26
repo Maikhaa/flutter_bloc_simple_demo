@@ -1,5 +1,8 @@
-import 'package:flutter_bloc_simple_demo/utils/temp_util.dart';
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
+
+// Project imports:
+import 'package:flutter_bloc_simple_demo/utils/temp_util.dart';
 
 void main() {
   final tempUtil = TempUtil();

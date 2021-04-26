@@ -1,6 +1,8 @@
-import 'package:flutter_bloc_simple_demo/bloc/weather_bloc.dart';
+// Package imports:
 import 'package:test/test.dart';
 
+// Project imports:
+import 'package:flutter_bloc_simple_demo/bloc/weather_bloc.dart';
 import '../mock_helpers/weather_repo_mock_helper.dart';
 
 void main() {

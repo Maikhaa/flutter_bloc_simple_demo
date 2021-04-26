@@ -1,7 +1,11 @@
+// Dart imports:
 import 'dart:async';
 
+// Package imports:
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
+// Project imports:
 import 'package:flutter_bloc_simple_demo/data/weather_repo.dart';
 import 'package:flutter_bloc_simple_demo/models/weather_model.dart';
 

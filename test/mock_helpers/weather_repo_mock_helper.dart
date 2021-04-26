@@ -1,8 +1,10 @@
-import 'package:flutter_bloc_simple_demo/data/weather_repo.dart';
-import 'package:flutter_bloc_simple_demo/models/weather_model.dart';
+// Package imports:
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+// Project imports:
+import 'package:flutter_bloc_simple_demo/data/weather_repo.dart';
+import 'package:flutter_bloc_simple_demo/models/weather_model.dart';
 import 'weather_repo_mock_helper.mocks.dart';
 
 @GenerateMocks([WeatherRepo])

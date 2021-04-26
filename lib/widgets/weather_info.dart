@@ -1,5 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+// Project imports:
 import 'package:flutter_bloc_simple_demo/bloc/weather_bloc.dart';
 import 'package:flutter_bloc_simple_demo/utils/constants.dart';
 import 'package:flutter_bloc_simple_demo/utils/temp_util.dart';

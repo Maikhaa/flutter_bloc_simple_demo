@@ -1,7 +1,10 @@
-import 'package:flutter_bloc_simple_demo/utils/constants.dart';
+// Package imports:
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+
+// Project imports:
+import 'package:flutter_bloc_simple_demo/utils/constants.dart';
 import 'client_mock_helper.mocks.dart';
 
 @GenerateMocks([http.Client])

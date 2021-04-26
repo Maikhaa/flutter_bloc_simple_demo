@@ -1,7 +1,12 @@
+// Dart imports:
+import 'dart:convert';
+
+// Package imports:
+import 'package:http/http.dart' as http;
+
+// Project imports:
 import 'package:flutter_bloc_simple_demo/models/weather_model.dart';
 import 'package:flutter_bloc_simple_demo/utils/constants.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class WeatherRepo {
   http.Client client;
