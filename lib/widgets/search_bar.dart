@@ -34,7 +34,6 @@ class SearchBar extends StatelessWidget {
                         weatherBloc.add(ResetWeather());
                         searchCityController.clear();
                       },
-                      key: Key('search-input'),
                       controller: searchCityController,
                       autofocus: true,
                       decoration: InputDecoration(

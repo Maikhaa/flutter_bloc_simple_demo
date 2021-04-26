@@ -28,7 +28,7 @@ class WeatherInfo extends StatelessWidget {
           case WeatherStatus.loadedMetric:
             return Center(
               key: Key("weather-info"),
-              child: Column(key: Key("weather-info"), children: [
+              child: Column(children: [
                 Text(
                   state.weather!.date,
                   style: Theme.of(context).textTheme.bodyText1,
@@ -62,8 +62,7 @@ class WeatherInfo extends StatelessWidget {
           case WeatherStatus.loadedImperial:
             return Center(
               child: Container(
-                key: Key("weather-info"),
-                child: Column(key: Key("weather-info"), children: [
+                child: Column(children: [
                   Text(
                     state.weather!.date,
                     style: Theme.of(context).textTheme.bodyText1,
