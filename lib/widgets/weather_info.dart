@@ -63,8 +63,8 @@ class WeatherInfo extends StatelessWidget {
                         SizedBox(
                           height: kstLargeBox,
                           width: kstLargeBox,
-                          child: Image.network(
-                            kstImageBaseURL + state.weather!.imgCode + '.png',
+                          child: Image.asset(
+                            'assets/images/${state.weather!.imgCode}.png',
                           ),
                         ),
                         SizedBox(height: kstSmallPadding),
@@ -111,8 +111,8 @@ class WeatherInfo extends StatelessWidget {
                         SizedBox(
                           height: kstLargeBox,
                           width: kstLargeBox,
-                          child: Image.network(
-                            kstImageBaseURL + state.weather!.imgCode + '.png',
+                          child: Image.asset(
+                            'assets/images/${state.weather!.imgCode}.png',
                           ),
                         ),
                         SizedBox(height: kstSmallPadding),
@@ -129,7 +129,7 @@ class WeatherInfo extends StatelessWidget {
                 SizedBox(
                   height: 120,
                   width: 120,
-                  child: Image.network(kstHomeImageURL),
+                  child: Image.asset('assets/images/s.png'),
                 ),
               ]),
             );
