@@ -21,6 +21,7 @@ class WeatherRepo {
 
   String formatCity(String city) {
     if (city == '') return '';
+
     return city.trim().toLowerCase();
   }
 
@@ -35,15 +36,17 @@ class WeatherRepo {
 
   int findWoeid(http.Response? locationResponse) {
     if (locationResponse == null) return 0;
-    var locationJson = jsonDecode(locationResponse.body);
-    var woeid = locationJson[0]['woeid'];
+
+    final locationJson = jsonDecode(locationResponse.body);
+    final woeid = locationJson[0]['woeid'];
     return woeid;
   }
 
   String findCityName(http.Response? locationResponse) {
     if (locationResponse == null) return '';
-    var locationJson = jsonDecode(locationResponse.body);
-    var cityName = locationJson[0]['title'];
+
+    final locationJson = jsonDecode(locationResponse.body);
+    final cityName = locationJson[0]['title'];
     return cityName;
   }
 
@@ -59,9 +62,11 @@ class WeatherRepo {
   WeatherModel? createWeatherModel(
       http.Response? weatherResponse, String cityName) {
     if (weatherResponse == null) return null;
-    var weatherJson = jsonDecode(weatherResponse.body);
+
+    final weatherJson = jsonDecode(weatherResponse.body);
     weatherJson['consolidated_weather'][0]['city'] = cityName;
-    var consolidatedWeatherJson = weatherJson['consolidated_weather'][0];
+
+    final consolidatedWeatherJson = weatherJson['consolidated_weather'][0];
     return WeatherModel.fromJson(consolidatedWeatherJson);
   }
 }

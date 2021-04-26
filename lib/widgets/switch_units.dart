@@ -7,6 +7,7 @@ class SwitchUnits extends StatelessWidget {
   Widget build(BuildContext context) {
     final weatherBloc = BlocProvider.of<WeatherBloc>(context);
     var isCelsius = true;
+
     return BlocBuilder<WeatherBloc, WeatherState>(
       builder: (BuildContext context, state) {
         switch (state.status) {

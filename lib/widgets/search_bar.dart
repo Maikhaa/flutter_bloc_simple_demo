@@ -4,11 +4,10 @@ import 'package:flutter_bloc_simple_demo/utils/constants.dart';
 import '../bloc/weather_bloc.dart';
 
 class SearchBar extends StatelessWidget {
-  final TextEditingController searchCityController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final weatherBloc = BlocProvider.of<WeatherBloc>(context);
+    final TextEditingController searchCityController = TextEditingController();
 
     return Container(
       decoration: BoxDecoration(
