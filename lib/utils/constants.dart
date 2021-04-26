@@ -17,6 +17,6 @@ const double kstSmallBox = 30.0;
 const double kstRegularBox = 60.0;
 const double kstLargeBox = 125.0;
 
-// Images
-const String kstHomeImageURL = 'https://www.metaweather.com/static/img/weather/png/s.png';
-const String kstImageBaseURL = 'https://www.metaweather.com/static/img/weather/png/';
+// Messages and text
+const String kstErrorMessage = 'Please try a different city\nor check your network connection.';
+const String kstAppName = 'Weather\nApp';
