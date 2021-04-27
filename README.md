@@ -1,6 +1,6 @@
 # flutter_bloc_simple_demo
 
-Simple Flutter application created to demostrate:
+Simple Flutter application created to demonstrate:
 
 - BLoC architecture.
 - Unit testing.
