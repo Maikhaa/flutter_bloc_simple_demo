@@ -9,7 +9,7 @@ Simple Flutter application created to demonstrate:
 - Mockito 5.0.0 with code generation.
 
 Android: Download the apk [here.](https://drive.google.com/file/d/1rQnr9ifkLYNjNkVWYUsS5-CHoiS0boTT/view?usp=sharing)</br>
-iOS: TestFlight link in progress.
+iOS: Use this TestFlight [link.](https://testflight.apple.com/join/qgXqjSAk)
 
  <table style="width:100%">
   <tr>
